@@ -1,15 +1,15 @@
 # CRA Express Boilerplate
 
-[x] Create React App
-[x] Express
-[x] React Router
-[x] React Redux
-[x] Redux Saga
-[x] Reselect
-[x] Styled Components
-[ ] TypeORM
-[ ] Passport
-[ ] Docker
+- [x] Create React App
+- [x] Express
+- [x] React Router
+- [x] React Redux
+- [x] Redux Saga
+- [x] Reselect
+- [x] Styled Components
+- [x] TypeORM
+- [ ] Passport
+- [ ] Docker
 
 
 ## Setup
