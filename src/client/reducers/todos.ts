@@ -15,7 +15,7 @@ export default (
       return action.value;
 
     case ACTIONS.SAVE_TODO_OK:
-      return [...state, action.value];
+      return [action.value, ...state];
 
     case ACTIONS.UPDATE_TODO_OK: {
       const value: Todo = action.value;

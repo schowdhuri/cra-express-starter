@@ -29,13 +29,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  @media all and (min-width: 780px) {
+    padding: 2rem;
+  }
 `;
 const Card = styled.div`
-  background: #e2e2e2;
-  border-radius: 16px;
-  box-shadow: 20px 20px 60px #c0c0c0, -20px -20px 60px #ffffff;
-  padding: 32px;
-  width: 60rem;
+  padding: 2rem 1rem;
+  width: 100vw;
+  @media all and (min-width: 780px) {
+    background: #e2e2e2;
+    border-radius: 16px;
+    box-shadow: 20px 20px 60px #c0c0c0, -20px -20px 60px #ffffff;
+    max-width: 60rem;
+    padding: 2rem;
+    width: 80vw;
+  }
 `;
 
 export default App;

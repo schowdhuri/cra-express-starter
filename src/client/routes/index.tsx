@@ -10,7 +10,7 @@ export default () => (<ConnectedRouter history={history}>
     <Route path="/" exact>
       <App>
         <div>home page..</div>
-      </App>}
+      </App>
     </Route>
   </Switch>
 </ConnectedRouter>);

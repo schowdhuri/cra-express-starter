@@ -55,8 +55,12 @@ const TextBox = styled.input`
   border-radius: 4px;
   box-shadow: inset 8px 8px 16px #d7d7d7, inset -8px -8px 16px #ededed;
   flex: 1;
-  font-size: 1.5rem;
-  padding: 2rem;
+  font-size: 1.25rem;
+  padding: 1rem;
+  @media all and (min-width: 768px) {
+    font-size: 1.5rem;
+    padding: 2rem;
+  }
 `;
 const AddButton = styled.button`
   align-items: center;
@@ -69,11 +73,15 @@ const AddButton = styled.button`
   display: flex;
   font-size: 1.25rem;
   justify-content: center;
-  height: 4rem;
+  height: 3rem;
   margin-left: 1rem;
-  width: 4rem;
+  width: 3rem;
   transition: background-color 0.2s, color 0.2s;
 
+  @media all and (min-width: 780px) {
+    height: 4rem;
+    width: 4rem;
+  }
   &:active,
   &:target {
     background: #17ab26;

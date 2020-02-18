@@ -58,7 +58,10 @@ const List = styled.ul`
 const Item = styled.li`
   align-items: center;
   display: flex;
-  padding: 1rem 0.5rem 1rem 0;
+  padding: 1rem 0;
+  @media all and (min-width: 780px) {
+    padding: 1rem 0.5rem 1rem 0;
+  }
   & + & {
     border-top: solid 1px #eaeaea;
   }
