@@ -11,16 +11,23 @@ import createRootReducer from "./reducers";
 import sagas from "./sagas";
 import Routes from "./routes";
 
-import "./css/index.css"
+import "./css/index.css";
 
 const sagaMiddleware = createMiddleware();
 const rootReducer = createRootReducer(history);
-const store = configureStore(rootReducer, sagaMiddleware, routerMiddleware(history));
+const store = configureStore(rootReducer, [
+  sagaMiddleware,
+  routerMiddleware(history)
+]);
 sagaMiddleware.run(sagas);
 
-const render = (Component: FunctionComponent) => ReactDOM.render(<Provider store={store}>
-  <Component />
-</Provider>, document.getElementById("root"));
+const render = (Component: FunctionComponent) =>
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component />
+    </Provider>,
+    document.getElementById("root")
+  );
 
 render(Routes);
 

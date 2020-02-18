@@ -38,7 +38,7 @@ const TodoList: FunctionComponent<TodoListProps> = () => {
           <Checkbox completed={item.completed} onClick={changeCompleted(item)}>
             {!item.completed || <i className="fa fa-check" />}
           </Checkbox>
-          <ItemName>{item.name}</ItemName>
+          <ItemName onClick={changeCompleted(item)}>{item.name}</ItemName>
           <ItemActions>
             <DeleteButton onClick={deleteTodo(item)}>
               <i className="fa fa-times" />
