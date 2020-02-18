@@ -7,7 +7,7 @@ import API_ROOT from "../../constants/apiRoot";
 import { GetTodosAction } from "../../types/actions";
 
 function* getTodos(action: GetTodosAction) {
-  yield put(setLoading(IS_LOADING, true));
+  yield put(setLoading(GET_TODOS, true));
   try {
     const response: any = yield call(request, `${API_ROOT}api/todos`);
     yield put(getTodosSuccess(response.json));
@@ -15,7 +15,7 @@ function* getTodos(action: GetTodosAction) {
     console.log(ex);
     yield put(getTodosFailure(ex.text));
   }
-  yield put(setLoading(IS_LOADING, false));
+  yield put(setLoading(GET_TODOS, false));
 }
 
 export default function*() {

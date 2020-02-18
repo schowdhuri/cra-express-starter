@@ -13,11 +13,35 @@ app.get("/api/ping", (req, res) => {
 });
 
 app.post("/api/todo", async (req, res) => {
-  const { name, completed=false } = req.body;
+  const { name, completed = false } = req.body;
   const todo = new Item();
   todo.name = name;
   todo.completed = completed;
   res.json(await dao.save(todo));
+});
+
+app.get("/api/todos/:id", async (req, res) => {
+  const id = req.params.id;
+  if(!id) {
+    return res.status(400).json("id is required");
+  }
+  res.json(await dao.findOne(Item, id));
+});
+
+app.delete("/api/todos/:id", async (req, res) => {
+  const id = req.params.id;
+  if(!id) {
+    return res.status(400).json("id is required");
+  }
+  res.json(await dao.remove(Item, id));
+});
+
+app.put("/api/todos/:id", async (req, res) => {
+  const data = req.body;
+  if(!req.params.id) {
+    return res.status(400).json("id is required");
+  }
+  res.json(await dao.update(Item, req.params.id, data));
 });
 
 app.get("/api/todos", async (req, res) => {

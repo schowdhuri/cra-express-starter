@@ -8,7 +8,7 @@ import { SaveTodoAction } from "../../types/actions";
 
 function* saveTodo(action: SaveTodoAction) {
   const { data } = action;
-  yield put(setLoading(IS_LOADING, true));
+  yield put(setLoading(SAVE_TODO, true));
   try {
     const response: any = yield call(request, `${API_ROOT}api/todo`, {
       method: "post",
@@ -20,7 +20,7 @@ function* saveTodo(action: SaveTodoAction) {
     console.log(ex);
     yield put(saveTodoFailure(ex.text));
   }
-  yield put(setLoading(IS_LOADING, false));
+  yield put(setLoading(SAVE_TODO, false));
 }
 
 export default function*() {
