@@ -4,10 +4,7 @@ import Todo from "../../types/todo";
 
 const initialState: Array<Todo> = [];
 
-export default (
-  state = initialState,
-  action: any
-) => {
+export default (state = initialState, action: any) => {
   const { type } = action;
 
   switch (type) {
@@ -19,9 +16,7 @@ export default (
 
     case ACTIONS.UPDATE_TODO_OK: {
       const value: Todo = action.value;
-      const index: number = state.findIndex(
-        item => item.id === value.id
-      );
+      const index: number = state.findIndex(item => item.id === value.id);
       if (index !== -1) {
         return [
           ...state.slice(0, index),
@@ -34,9 +29,7 @@ export default (
 
     case ACTIONS.DEL_TODO_OK: {
       const value: Todo = action.value;
-      const index: number = state.findIndex(
-        item => item.id === value.id
-      );
+      const index: number = state.findIndex(item => item.id === value.id);
       if (index !== -1) {
         return [...state.slice(0, index), ...state.slice(index + 1)];
       }

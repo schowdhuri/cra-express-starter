@@ -1,6 +1,6 @@
 import Todo from "./todo";
 
 export interface RootState {
-  loading: boolean[],
-  todos: Todo[]
-};
+  loading: boolean[];
+  todos: Todo[];
+}

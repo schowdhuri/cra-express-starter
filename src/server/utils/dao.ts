@@ -38,13 +38,17 @@ export default class DAO {
     return await connection.manager.find(entityClass);
   }
 
-  async update(entityClass: ObjectType<Entity>, id: number, data: Entity): Promise<Entity[]> {
+  async update(
+    entityClass: ObjectType<Entity>,
+    id: number,
+    data: Entity
+  ): Promise<Entity[]> {
     const connection = await this.connect;
     const item = await connection.manager.findOne(entityClass, id);
-    if(!item) {
+    if (!item) {
       throw new Error(`Entity ID ${id} not found`);
     }
-    for(let key in data) {
+    for (let key in data) {
       item[key] = data[key];
     }
     return await connection.manager.save(item);
@@ -53,7 +57,7 @@ export default class DAO {
   async remove(entityClass: ObjectType<Entity>, id: number): Promise<Entity[]> {
     const connection = await this.connect;
     const item = await connection.manager.findOne(entityClass, id);
-    if(!item) {
+    if (!item) {
       throw new Error(`Entity ID ${id} not found`);
     }
     return await connection.manager.remove(item);

@@ -10,17 +10,15 @@ function* deleteTodo(action: DeleteTodoAction) {
   const { id } = action;
   yield put(setLoading(DEL_TODO, true));
   try {
-    const response: any = yield call(
-      request,
-      `${API_ROOT}api/todos/${id}`,
-      {
-        method: "delete"
-      }
+    const response: any = yield call(request, `${API_ROOT}api/todos/${id}`, {
+      method: "delete"
+    });
+    yield put(
+      deleteTodoSuccess({
+        ...response.json,
+        id
+      })
     );
-    yield put(deleteTodoSuccess({
-      ...response.json,
-      id
-    }));
   } catch (ex) {
     console.log(ex);
     yield put(deleteTodoFailure(ex.text));

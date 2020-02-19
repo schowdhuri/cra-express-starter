@@ -22,7 +22,7 @@ app.post("/api/todo", async (req, res) => {
 
 app.get("/api/todos/:id", async (req, res) => {
   const id = req.params.id;
-  if(!id) {
+  if (!id) {
     return res.status(400).json("id is required");
   }
   res.json(await dao.findOne(Item, id));
@@ -30,7 +30,7 @@ app.get("/api/todos/:id", async (req, res) => {
 
 app.delete("/api/todos/:id", async (req, res) => {
   const id = req.params.id;
-  if(!id) {
+  if (!id) {
     return res.status(400).json("id is required");
   }
   res.json(await dao.remove(Item, id));
@@ -38,7 +38,7 @@ app.delete("/api/todos/:id", async (req, res) => {
 
 app.put("/api/todos/:id", async (req, res) => {
   const data = req.body;
-  if(!req.params.id) {
+  if (!req.params.id) {
     return res.status(400).json("id is required");
   }
   res.json(await dao.update(Item, req.params.id, data));
