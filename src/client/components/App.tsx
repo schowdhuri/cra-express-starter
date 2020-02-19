@@ -1,7 +1,10 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 import styled from "styled-components";
-import * as actions from "../actions/index";
+
+import history from "../utils/history";
 import Todo from "../../types/todo";
 import { getTodos } from "../selectors";
 import CreateTodo from "./CreateTodo";
@@ -13,13 +16,10 @@ interface AppProps {
   children: any;
 }
 
-const App: FunctionComponent<AppProps> = () => {
+const Skeleton: FunctionComponent<AppProps> = (props: AppProps) => {
   return (
     <Wrapper>
-      <Card>
-        <CreateTodo />
-        <TodoList />
-      </Card>
+      <Card>{props.children}</Card>
     </Wrapper>
   );
 };
@@ -46,4 +46,16 @@ const Card = styled.div`
   }
 `;
 
-export default App;
+// Routes
+export default () => (
+  <ConnectedRouter history={history}>
+    <Switch>
+      <Route path="/" exact>
+        <Skeleton>
+          <CreateTodo />
+          <TodoList />
+        </Skeleton>
+      </Route>
+    </Switch>
+  </ConnectedRouter>
+);

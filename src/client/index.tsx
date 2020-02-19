@@ -9,7 +9,7 @@ import configureStore from "./store"; // eslint-disable-line import/default
 import history from "./utils/history";
 import createRootReducer from "./reducers";
 import sagas from "./sagas";
-import Routes from "./routes";
+import App from "./components/App";
 
 import "./css/index.css";
 
@@ -29,7 +29,7 @@ const render = (Component: FunctionComponent) =>
     document.getElementById("root")
   );
 
-render(Routes);
+render(App);
 
 // if (module.hot) {
 //   module.hot.accept('./routes', () => {
