@@ -23,26 +23,26 @@ export default class DAO {
     });
   }
 
-  async save(entityClass: ObjectType<Entity>): void {
+  async save<Entity>(entity: Entity): Promise<Entity> {
     const connection = await this.connect;
-    return await connection.manager.save(entityClass);
+    return await connection.manager.save(entity);
   }
 
-  async findOne(entityClass: ObjectType<Entity>, id: number): Promise<Entity> {
+  async findOne<Entity>(entityClass: ObjectType<Entity>, id: number): Promise<Entity | undefined> {
     const connection = await this.connect;
     return await connection.manager.findOne(entityClass, id);
   }
 
-  async find(entityClass: ObjectType<Entity>): Promise<Entity[]> {
+  async find<Entity>(entityClass: ObjectType<Entity>): Promise<Entity[]> {
     const connection = await this.connect;
     return await connection.manager.find(entityClass);
   }
 
-  async update(
+  async update<Entity>(
     entityClass: ObjectType<Entity>,
     id: number,
     data: Entity
-  ): Promise<Entity[]> {
+  ): Promise<Entity> {
     const connection = await this.connect;
     const item = await connection.manager.findOne(entityClass, id);
     if (!item) {
@@ -54,7 +54,7 @@ export default class DAO {
     return await connection.manager.save(item);
   }
 
-  async remove(entityClass: ObjectType<Entity>, id: number): Promise<Entity[]> {
+  async remove<Entity>(entityClass: ObjectType<Entity>, id: number): Promise<Entity> {
     const connection = await this.connect;
     const item = await connection.manager.findOne(entityClass, id);
     if (!item) {

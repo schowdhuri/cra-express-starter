@@ -1,0 +1,14 @@
+FROM node:alpine
+
+RUN yarn global add pm2
+
+WORKDIR /usr/src/webapp
+
+COPY package.json .
+COPY yarn.lock .
+RUN yarn
+COPY . .
+RUN yarn build
+RUN mkdir -p /var/www/webapp
+RUN mv dist/* /var/www/webapp
+
