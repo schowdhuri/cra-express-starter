@@ -25,7 +25,7 @@ app.get("/api/todos/:id", async (req, res) => {
   if (!id) {
     return res.status(400).json("id is required");
   }
-  res.json(await dao.findOne(Item, id));
+  res.json(await dao.findOne(Item, Number(id)));
 });
 
 app.delete("/api/todos/:id", async (req, res) => {
@@ -33,7 +33,7 @@ app.delete("/api/todos/:id", async (req, res) => {
   if (!id) {
     return res.status(400).json("id is required");
   }
-  res.json(await dao.remove(Item, id));
+  res.json(await dao.remove(Item, Number(id)));
 });
 
 app.put("/api/todos/:id", async (req, res) => {
@@ -41,7 +41,7 @@ app.put("/api/todos/:id", async (req, res) => {
   if (!req.params.id) {
     return res.status(400).json("id is required");
   }
-  res.json(await dao.update(Item, req.params.id, data));
+  res.json(await dao.update(Item, Number(req.params.id), data));
 });
 
 app.get("/api/todos", async (req, res) => {

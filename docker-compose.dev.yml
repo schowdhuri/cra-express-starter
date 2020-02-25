@@ -1,8 +1,15 @@
 version: "3"
 
 services:
+  db:
+    image: mariadb
+    env_file: .env.dev
+    networks:
+      - webapp
   webapp:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - ./src:/var/www/webapp/src
       - ./public/:/var/www/webapp/public
@@ -10,18 +17,13 @@ services:
       - /var/www/webapp/node_modules
     ports:
       - "3000:3000"
+      - "3001:3001"
     restart: always
-    env_file: .env
+    env_file: .env.dev
     networks:
       - webapp
     command: yarn start
     depends_on:
       - db
-  db:
-    image: mariadb
-    restart: always
-    env_file: .env
-    networks:
-      - webapp
 networks:
   webapp: {}

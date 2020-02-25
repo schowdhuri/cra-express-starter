@@ -9,19 +9,36 @@
 - [x] Styled Components
 - [x] TypeORM
 - [x] Docker
-- [ ] Production Bundle
 - [ ] Passport
 - [ ] Jest
+- [x] Production Image
 
-## Setup
+## Development
 
-1. Create the .env file and add `MYSQL_ROOT_PASSWORD=<some password>`
+1. Create the `.env.dev` file and add `MYSQL_ROOT_PASSWORD=<some password>`
 
-2.
+2. Get the development environment up and running:
 
 ```bash
-$ docker-compose up --build
-$ docker-compose exec db mysql -u root -p --execute="CREATE DATABASE bucketlist;"
-$ docker-compose exec webapp node_modules/.bin/ts-node -P tsconfig.server.json scripts/setup.ts
-$ docker-compose restart
+$ docker-compose -f docker-compose.dev.yml up --build
+$ docker-compose -f docker-compose.dev.yml exec db mysql -u root -p --execute="CREATE DATABASE bucketlist;"
+$ docker-compose -f docker-compose.dev.yml exec webapp node_modules/.bin/ts-node -P tsconfig.server.json scripts/setup.ts
+$ docker-compose -f docker-compose.dev.yml restart
 ```
+
+Open `http://localhost:3000`
+
+## Deploy
+
+1. Create the `.env.prod` file and add `MYSQL_ROOT_PASSWORD=<some password>`
+
+2. Create the production docker image:
+
+```bash
+$ docker-compose -f docker-compose.prod.yml up --build
+$ docker-compose -f docker-compose.prod.yml exec db mysql -u root -p --execute="CREATE DATABASE bucketlist;"
+$ docker-compose -f docker-compose.prod.yml exec webapp node_modules/.bin/ts-node -P tsconfig.server.json scripts/setup.ts
+$ docker-compose -f docker-compose.prod.yml restart
+```
+
+The app is served on `http://localhost/`
