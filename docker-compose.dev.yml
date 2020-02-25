@@ -2,7 +2,9 @@ version: "3"
 
 services:
   webapp:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - ./src:/var/www/webapp/src
       - ./public/:/var/www/webapp/public
