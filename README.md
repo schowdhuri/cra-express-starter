@@ -11,9 +11,7 @@
 - [x] Docker
 - [ ] Passport
 - [ ] Jest
-- [ ] Production Image
-  - [ ] nginx
-  - [ ] pm2
+- [x] Production Image
 
 ## Development
 
