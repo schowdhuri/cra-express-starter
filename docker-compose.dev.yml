@@ -10,8 +10,9 @@ services:
       - /var/www/webapp/node_modules
     ports:
       - "3000:3000"
+      - "3001:3001"
     restart: always
-    env_file: .env
+    env_file: .env.dev
     networks:
       - webapp
     command: yarn start
@@ -20,7 +21,7 @@ services:
   db:
     image: mariadb
     restart: always
-    env_file: .env
+    env_file: .env.dev
     networks:
       - webapp
 networks:

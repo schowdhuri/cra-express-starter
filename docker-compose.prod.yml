@@ -1,32 +1,22 @@
 version: "3"
 
 services:
-  backend:
+  db:
+    image: mariadb
+    env_file: .env.prod
+    networks:
+      - webapp
+  webapp:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    # volumes:
-    #   - ./src:/var/www/webapp/src
-    ports:
-      - "3001:3001"
-    # restart: always
-    env_file: .env
-    # networks:
-    #   - webapp
-    command: pm2 start /var/www/webapp/server/index.js
-    depends_on:
-      - db
-  nginx:
-    build:
-      context: ./nginx
     ports:
       - "80:80"
-
-  db:
-    image: mariadb
-    # restart: always
-    env_file: .env
-    # networks:
-    #   - webapp
-# networks:
-#   webapp: {}
+    env_file: .env.prod
+    command: sh scripts/run.sh
+    depends_on:
+      - db
+    networks:
+      - webapp
+networks:
+  webapp: {}

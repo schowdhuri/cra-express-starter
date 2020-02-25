@@ -11,3 +11,4 @@ README.md
 LICENSE
 .DS_Store
 .env*
+nginx.conf
