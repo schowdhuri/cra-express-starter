@@ -1,6 +1,11 @@
 version: "3"
 
 services:
+  db:
+    image: mariadb
+    env_file: .env.dev
+    networks:
+      - webapp
   webapp:
     build:
       context: .
@@ -20,11 +25,5 @@ services:
     command: yarn start
     depends_on:
       - db
-  db:
-    image: mariadb
-    restart: always
-    env_file: .env.dev
-    networks:
-      - webapp
 networks:
   webapp: {}
