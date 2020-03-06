@@ -10,7 +10,7 @@ async function initDB() {
     username: "root",
     password: process.env.MYSQL_ROOT_PASSWORD,
     database: "bucketlist",
-    entities: [Item],
+    entities: "../src/server/models/*.ts",
     synchronize: true,
     logging: false
   });

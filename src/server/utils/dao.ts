@@ -17,7 +17,7 @@ export default class DAO {
       username: "root",
       password: process.env.MYSQL_ROOT_PASSWORD,
       database: "bucketlist",
-      entities: [Item],
+      entities: "../models/*.ts",
       synchronize: true,
       logging: false
     });
