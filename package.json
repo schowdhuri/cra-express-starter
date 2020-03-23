@@ -38,12 +38,10 @@
     "typescript": "~3.7.2"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
     "ts-node-dev": "^1.0.0-pre.44"
   },
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "concurrently -k -p \"[{name}]\" -n \"TSNode,Frontend\" -c \"yellow.bold,green.bold\" \"yarn start:server\" \"yarn start:client\" ",
     "start:client": "react-app-rewired start",
     "start:server": "ts-node-dev --project tsconfig.server.json --respawn --transpileOnly src/server/index.ts",
     "clean": "rm -rf dist",
